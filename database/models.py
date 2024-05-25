@@ -21,6 +21,7 @@ class TransactionsTable(Base):
     __tablename__ = "transactions"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str]
     cost: Mapped[int]
     category: Mapped[Categories]
     date: Mapped[datetime.datetime] = mapped_column(server_default=text("TIMEZONE('utc', now())"))
@@ -31,4 +32,3 @@ class WalletsTable(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     balance: Mapped[int]
-    moneybox: Mapped[int]
