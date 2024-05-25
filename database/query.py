@@ -26,7 +26,15 @@ class WalletQueries:
             query = select(WalletsTable.balance)
             result = sess.execute(query)
             bal = result.scalars().all()
-            print(f"{bal=}")
+
+            print(f"Balance = {bal[0]}")
+    @staticmethod
+    def trans_params():
+        title = input("Write transaction name: ")
+        cost = int(input("Write how much it: "))
+        category = input("Write your category: profit, food, clothes, fun, health, transport, other: ")
+
+        WalletQueries.insert_trans(title, cost, category)
 
     @staticmethod
     def insert_trans(*args):
@@ -46,8 +54,15 @@ class WalletQueries:
     def delete_trans(del_id: int):
         with session() as sess:
             d = sess.get(TransactionsTable, del_id)
+            bal = sess.get(WalletsTable, 1)
+            if d.category == "profit":
+                bal.balance = cast(bal.balance, Integer) - d.cost
+            else:
+                bal.balance = cast(bal.balance, Integer) + d.cost
+
             sess.delete(d)
             sess.commit()
+        print(f"Transaction {del_id} deleted")
 
     @staticmethod
     def get_all_trans():
