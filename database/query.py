@@ -1,8 +1,8 @@
-from database.db import engine, Base
+from database.db import engine, Base, session
 from database.models import TransactionsTable, WalletsTable
 
 
-class WalletQueries():
+class WalletQueries:
     @staticmethod
     def create_tables():
         engine.echo = False

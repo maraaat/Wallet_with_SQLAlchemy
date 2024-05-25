@@ -1,3 +1,3 @@
 from database.query import WalletQueries
 
-WalletQueries.create_tables()
+#WalletQueries.create_tables()
