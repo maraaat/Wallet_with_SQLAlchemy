@@ -8,7 +8,7 @@ class WalletQueries:
     @staticmethod
     def create_tables():
         engine.echo = False
-        # Base.metadata.drop_all(engine)
+        Base.metadata.drop_all(engine)
         Base.metadata.create_all(engine)
         engine.echo = True
 

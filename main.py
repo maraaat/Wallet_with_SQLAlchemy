@@ -1,19 +1,9 @@
 from database.query import WalletQueries
 
-# WalletQueries.create_tables()
-#
-# # WalletQueries.insert_basic()
-#
-# WalletQueries.get_balance()
-#
-# WalletQueries.trans_params()
-# WalletQueries.get_all_trans()
-# # WalletQueries.delete_trans(2)
+# WalletQueries.create_tables() # Use it to delete all tables and make new
 
 i = 1
 while i != 5:
-    i = 1
-    print()
     i = int(input("""What do you want to do? 
     1 - get balance
     2 - add new transaction
@@ -24,7 +14,7 @@ while i != 5:
     if i == 1:
         WalletQueries.get_balance()
 
-    elif i==2:
+    elif i == 2:
         WalletQueries.trans_params()
 
     elif i == 3:
